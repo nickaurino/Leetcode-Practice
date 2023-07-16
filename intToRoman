@@ -1,0 +1,76 @@
+class Solution {
+    public String intToRoman(int x) {
+        String r = "";
+        boolean isDone = false;
+
+        while (!isDone) {
+            isDone = true;
+            for (int i = 0;i < x/1000; i++)
+                r += "M";
+            x -= x/1000 * 1000;
+
+            for (int i = 0;i < x/500; i++){
+                if (((x/100) ==  9)){
+                    r += "CM";
+                    x -= 900;
+                    break;
+                }
+                r += "D";}
+            x -= x/500 * 500;
+
+            for (int i = 0;i < x/100; i++){
+                    if (((x/100) ==  4)){
+                    r += "CD";
+                    x -= 400;
+                    break;
+                }
+
+                r += "C";}
+            x -= x/100 * 100;
+
+            for (int i = 0;i < x/50; i++){
+                if (((x/10) ==  9)){
+                    r += "XC";
+                    x -= 90;
+                    break;
+                }
+                r += "L";}
+
+            x -= x/50 *50;
+            
+            for (int i = 0;i < x/10; i++){
+                if (((x/10) ==  4)){
+                    r += "XL";
+                    x -= 40;
+                    break;
+                }
+                r += "X";}
+            x -= x/10 *10;
+            
+            for (int i = 0;i < x/5; i++){
+                if ((x- (x/5 * 5) ==  4)){
+                    r += "IX";
+                    x -= 9;
+                    break;
+                }
+
+                r += "V";
+            }
+               
+            x -= x/5 * 5;
+
+            for (int i = 0;i < x; i++){
+                if ((x ==  4)){
+                    r += "IV";
+                    x -= 4;
+                    break;
+                }
+                r += "I";
+            }
+                
+            x -= x/1;
+        }
+        
+        return(r);
+    }
+}
