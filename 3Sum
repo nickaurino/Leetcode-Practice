@@ -1,0 +1,27 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] num) {
+        int n = num.length;
+        ArrayList<List<Integer>> list = new ArrayList<List<Integer>>();
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+
+
+        for (int i = 0; i < n -2; i++){
+            for(int i2 = i+1; i2 < n - 1; i2++){
+                for(int i3 = i+2; i3 < n; i3++){
+                    if (num[i] + num[i2] +num[i3] == 0 && i2 != i3){
+                        temp.add(num[i]);
+                        temp.add(num[i2]);
+                        temp.add(num[i3]);
+                        Collections.sort(temp);
+                        if (!list.contains(temp))
+                            list.add(temp);
+                        temp = new ArrayList<Integer>();
+                    }
+                }
+            }
+
+        }
+        return(list);
+        
+    }
+}
