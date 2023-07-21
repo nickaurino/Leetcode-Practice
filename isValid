@@ -1,0 +1,33 @@
+class Solution {
+    public boolean isValid(String s) {
+        char [] chars = new char[s.length()];
+        for (int i = 0; i < s.length(); i++){
+            chars[i] = s.charAt(i);
+        }
+
+        Map<Character, Character> map = new HashMap<>();
+        map.put('(', ')');
+        map.put('{', '}');
+        map.put('[', ']');
+
+        for (int i = 0; i < s.length() - 1; i++){
+            if (chars[i] == '(' || chars[i] == '[' || chars[i] == '{'){
+                for(int i2 = i + 1; i2 < s.length(); i2++){ 
+                    if (map.get(chars[i]) == chars[i2]){
+                        chars[i] = '_';
+                        chars[i2] = '_';
+                        break;
+
+                    }
+                }
+            }
+        }
+        for (char th : chars) {
+            if (th == '(' || th == '[' || th == '{' || th == ')' || th == ']' || th == '}') {
+                return(false);
+            }
+        }
+        return(true);
+        
+    }
+}
